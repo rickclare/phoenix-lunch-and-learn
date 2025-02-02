@@ -1,0 +1,9 @@
+[files]
+extend-exclude = ["assets/vendor/"]
+
+[default]
+locale = "en-us"
+extend-ignore-re = ["lts-jod", "AxeBuilder"]
+
+[default.extend-words]
+behaviour = "behaviour"
