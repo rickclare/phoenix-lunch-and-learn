@@ -1,0 +1,34 @@
+# The directory Mix will write compiled artifacts to.
+/_build/
+
+# If you run "mix test --cover", coverage assets end up here.
+/cover/
+
+# The directory Mix downloads your dependencies sources to.
+/deps/
+/local_deps/
+
+# Ignore assets that are produced by build tools.
+/priv/static/assets/
+
+# Ignore vendored assets
+/assets/vendor/
+
+# Jest coverage
+/assets/coverage
+
+.vscode/
+.vim/
+node_modules/
+
+# VSCode Elixir LS
+.elixir_ls/
+.elixir-tools/
+.lexical/
+
+.pnp.*
+
+playwright-report/
+/playwright/test-results/
+/playwright/report/
+/playwright/.cache/
