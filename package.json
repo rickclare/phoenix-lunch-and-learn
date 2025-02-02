@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "workspaces": [
+    "deps/*",
+    "assets"
+  ],
+  "scripts": {
+    "commit": "commit",
+    "deps:update": "bun x --bun npm-check-updates@latest --interactive --root --workspace=assets --format=group --packageManager=bun --install=always"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.2",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "prettier-plugin-toml": "^2.0.2",
+    "watchman": "^1.0.0"
+  },
+  "trustedDependencies": [
+    "@parcel/watcher"
+  ]
+}
