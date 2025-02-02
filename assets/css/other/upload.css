@@ -1,0 +1,12 @@
+@layer base {
+  /* Hide the "Choose File" button for Phoenix Live Upload fields
+    (we utilize the <label for={upload.ref}> to initiate file selection instead)
+  */
+  input[type="file"][data-phx-upload-ref] {
+    @apply hidden;
+  }
+
+  .phx-change-loading [phx-drop-target] label {
+    @apply cursor-wait;
+  }
+}
