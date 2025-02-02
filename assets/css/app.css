@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+/* tailwind extras */
+@import "./tailwind/variants.css";
+
+/* other */
+@import "./other/phoenix_html.css";
+@import "./other/upload.css";
+
+@plugin "./tailwind/heroicons";
+
+@source "../js";
+@source "../../lib/lunch_web";
+
+/*
+ * Make LiveView wrapper divs transparent for layout.
+ * This makes it possible to use LiveViews as flex children for example.
+ */
+[data-phx-root-id] {
+  display: contents;
+}

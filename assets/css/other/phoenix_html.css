@@ -1,0 +1,13 @@
+@layer base {
+  /*
+    Hide the submit button that is created as part of
+    auto-generated Phoenix.HTML "data-method" forms
+  */
+  body > form input[type="hidden"][name="_method"] + input[type="submit"] {
+    @apply hidden;
+  }
+
+  [data-hidden] {
+    @apply hidden;
+  }
+}

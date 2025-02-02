@@ -1,0 +1,27 @@
+services:
+  web:
+    build: .
+    container_name: phoenix-lunch-and-learn
+    image: ghcr.io/rickclare/phoenix-lunch-and-learn:1.1
+    platform: linux/amd64
+    ports:
+      - "4000:4000"
+      - "4443:4443"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/deps
+      - /app/_build
+    # develop:
+    #   watch:
+    #     - action: sync
+    #       path: .
+    #       target: /app
+    #       ignore:
+    #         - _build/
+    #         - deps/
+    #         - node_modules/
+    #     - action: rebuild
+    #       path: package.json
+    #     - action: rebuild
+    #       path: mix.lock
