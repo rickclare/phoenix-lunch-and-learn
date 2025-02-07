@@ -18,6 +18,8 @@ defmodule LunchWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+
+    live "/image", ImageLive
   end
 
   # Other scopes may use custom stacks.
