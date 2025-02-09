@@ -20,6 +20,7 @@ defmodule LunchWeb.Router do
     get "/", PageController, :home
 
     live "/image", ImageLive
+    live "/drawing", DrawingBoardLive
   end
 
   # Other scopes may use custom stacks.
