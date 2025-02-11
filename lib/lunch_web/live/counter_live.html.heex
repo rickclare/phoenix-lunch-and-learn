@@ -1,13 +1,13 @@
 <div class="w-50 grid">
-  <button class="rounded bg-red-500 p-1 text-white">
+  <button phx-click="increment" class="rounded bg-red-500 p-1 text-white hover:bg-red-700">
     Up
   </button>
 
   <span class="text-lg font-bold">
-    Count: 0
+    Count: {@count}
   </span>
 
-  <button class="rounded bg-green-500 p-1 text-white">
+  <button phx-click="decrement" class="rounded bg-green-500 p-1 text-white hover:bg-green-700">
     Down
   </button>
 </div>
