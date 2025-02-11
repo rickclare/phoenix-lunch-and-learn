@@ -19,6 +19,7 @@ defmodule LunchWeb.Router do
 
     get "/", PageController, :home
 
+    live "/counter", CounterLive
     live "/image", ImageLive
     live "/drawing", DrawingBoardLive
   end
