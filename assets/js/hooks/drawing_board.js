@@ -39,6 +39,10 @@ export const DrawingBoard = {
     this.handleEvent("newLine", ({ from, to, color }) => {
       this.drawLine(from, to, color)
     })
+
+    this.handleEvent("changeColor", ({ color }) => {
+      this.color = color
+    })
   },
   drawLine(from, to, color) {
     this.ctx.strokeStyle = color
