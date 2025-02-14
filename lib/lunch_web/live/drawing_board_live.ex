@@ -14,6 +14,18 @@ defmodule LunchWeb.DrawingBoardLive do
     <div id="drawing-board" phx-hook="DrawingBoard" phx-update="ignore" data-color={@color}>
       <canvas width="600" height="400" class="rounded border"></canvas>
     </div>
+
+    <label :for={color <- colors()}>
+      <input
+        type="radio"
+        name="color"
+        phx-click="change_color"
+        phx-value={color}
+        value={color}
+        checked={color == @color}
+      />
+      {color}
+    </label>
     """
   end
 
@@ -21,6 +33,10 @@ defmodule LunchWeb.DrawingBoardLive do
     Phoenix.PubSub.broadcast_from(Lunch.PubSub, self(), "drawing", {:dragged, point})
 
     {:noreply, socket}
+  end
+
+  def handle_event("change_color", %{"value" => color}, socket) do
+    {:noreply, push_event(socket, "changeColor", %{color: color})}
   end
 
   def handle_info({:dragged, point}, socket) do
