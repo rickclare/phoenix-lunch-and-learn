@@ -24,6 +24,16 @@ defmodule LunchWeb.Router do
 
     live "/image", ImageLive
     live "/drawing", DrawingBoardLive
+
+    # TODO: move these routes to a really authenticated live_session
+    live_session :fake_admin_authenticated do
+      live "/admin/users", UserLive.Index, :index
+      live "/admin/users/new", UserLive.Index, :new
+      live "/admin/users/:id/edit", UserLive.Index, :edit
+
+      live "/admin/users/:id", UserLive.Show, :show
+      live "/admin/users/:id/show/edit", UserLive.Show, :edit
+    end
   end
 
   # Other scopes may use custom stacks.
