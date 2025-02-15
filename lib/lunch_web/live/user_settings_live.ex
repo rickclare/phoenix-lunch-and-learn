@@ -1,4 +1,5 @@
 defmodule LunchWeb.UserSettingsLive do
+  @moduledoc false
   use LunchWeb, :live_view
 
   alias Lunch.Accounts

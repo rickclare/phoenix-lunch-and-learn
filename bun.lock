@@ -13,6 +13,7 @@
       "name": "assets",
       "dependencies": {
         "@tailwindcss/cli": "^4.0.7",
+        "@tailwindcss/forms": "^0.5.10",
         "phoenix": "workspace:*",
         "phoenix_html": "workspace:*",
         "phoenix_live_view": "workspace:*",
@@ -385,6 +386,8 @@
     "@stylistic/eslint-plugin-js": ["@stylistic/eslint-plugin-js@2.13.0", "", { "dependencies": { "eslint-visitor-keys": "^4.2.0", "espree": "^10.3.0" }, "peerDependencies": { "eslint": ">=8.40.0" } }, "sha512-GPPDK4+fcbsQD58a3abbng2Dx+jBoxM5cnYjBM4T24WFZRZdlNSKvR19TxP8CPevzMOodQ9QVzNeqWvMXzfJRA=="],
 
     "@tailwindcss/cli": ["@tailwindcss/cli@4.0.7", "", { "dependencies": { "@parcel/watcher": "^2.5.1", "@tailwindcss/node": "4.0.7", "@tailwindcss/oxide": "4.0.7", "enhanced-resolve": "^5.18.1", "lightningcss": "^1.29.1", "mri": "^1.2.0", "picocolors": "^1.1.1", "tailwindcss": "4.0.7" }, "bin": { "tailwindcss": "dist/index.mjs" } }, "sha512-CX+cUk3SF0HfYnttiGJUAejFJZWvhsujVchflsrvJ5yzfp033mnbvvMus8llKpX2pWdeXCLZiQEGAMvA4bsBCg=="],
+
+    "@tailwindcss/forms": ["@tailwindcss/forms@0.5.10", "", { "dependencies": { "mini-svg-data-uri": "^1.2.3" }, "peerDependencies": { "tailwindcss": ">=3.0.0 || >= 3.0.0-alpha.1 || >= 4.0.0-alpha.20 || >= 4.0.0-beta.1" } }, "sha512-utI1ONF6uf/pPNO68kmN1b8rEwNXv3czukalo8VtJH8ksIkZXr3Q3VYudZLkCsDd4Wku120uF02hYK25XGPorw=="],
 
     "@tailwindcss/node": ["@tailwindcss/node@4.0.7", "", { "dependencies": { "enhanced-resolve": "^5.18.1", "jiti": "^2.4.2", "tailwindcss": "4.0.7" } }, "sha512-dkFXufkbRB2mu3FPsW5xLAUWJyexpJA+/VtQj18k3SUiJVLdpgzBd1v1gRRcIpEJj7K5KpxBKfOXlZxT3ZZRuA=="],
 
@@ -953,6 +956,8 @@
     "mime-types": ["mime-types@2.1.35", "", { "dependencies": { "mime-db": "1.52.0" } }, "sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw=="],
 
     "mimic-fn": ["mimic-fn@2.1.0", "", {}, "sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg=="],
+
+    "mini-svg-data-uri": ["mini-svg-data-uri@1.4.4", "", { "bin": { "mini-svg-data-uri": "cli.js" } }, "sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg=="],
 
     "minimatch": ["minimatch@3.1.2", "", { "dependencies": { "brace-expansion": "^1.1.7" } }, "sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw=="],
 

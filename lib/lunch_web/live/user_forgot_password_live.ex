@@ -1,4 +1,5 @@
 defmodule LunchWeb.UserForgotPasswordLive do
+  @moduledoc false
   use LunchWeb, :live_view
 
   alias Lunch.Accounts
@@ -19,7 +20,7 @@ defmodule LunchWeb.UserForgotPasswordLive do
           </.button>
         </:actions>
       </.simple_form>
-      <p class="text-center text-sm mt-4">
+      <p class="mt-4 text-center text-sm">
         <.link href={~p"/users/register"}>Register</.link>
         | <.link href={~p"/users/log_in"}>Log in</.link>
       </p>

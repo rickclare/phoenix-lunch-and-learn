@@ -1,9 +1,10 @@
 defmodule LunchWeb.UserSettingsLiveTest do
   use LunchWeb.ConnCase
 
-  alias Lunch.Accounts
-  import Phoenix.LiveViewTest
   import Lunch.AccountsFixtures
+  import Phoenix.LiveViewTest
+
+  alias Lunch.Accounts
 
   describe "Settings page" do
     test "renders settings page", %{conn: conn} do

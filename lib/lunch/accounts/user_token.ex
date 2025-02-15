@@ -1,6 +1,9 @@
 defmodule Lunch.Accounts.UserToken do
+  @moduledoc false
   use Ecto.Schema
+
   import Ecto.Query
+
   alias Lunch.Accounts.UserToken
 
   @hash_algorithm :sha256

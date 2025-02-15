@@ -1,10 +1,11 @@
 defmodule Lunch.AccountsTest do
   use Lunch.DataCase
 
-  alias Lunch.Accounts
-
   import Lunch.AccountsFixtures
-  alias Lunch.Accounts.{User, UserToken}
+
+  alias Lunch.Accounts
+  alias Lunch.Accounts.User
+  alias Lunch.Accounts.UserToken
 
   describe "get_user_by_email/1" do
     test "does not return the user if the email does not exist" do
@@ -97,7 +98,7 @@ defmodule Lunch.AccountsTest do
   describe "change_user_registration/2" do
     test "returns a changeset" do
       assert %Ecto.Changeset{} = changeset = Accounts.change_user_registration(%User{})
-      assert changeset.required == [:password, :email]
+      assert changeset.required == [:password, :email, :name]
     end
 
     test "allows fields to be set" do
@@ -503,6 +504,60 @@ defmodule Lunch.AccountsTest do
   describe "inspect/2 for the User module" do
     test "does not include password" do
       refute inspect(%User{password: "123456"}) =~ "password: \"123456\""
+    end
+  end
+
+  describe "users" do
+    import Lunch.AccountsFixtures
+
+    alias Lunch.Accounts.User
+
+    @invalid_attrs %{name: nil}
+
+    test "list_users/0 returns all users" do
+      user = user_fixture()
+      assert Accounts.list_users() == [user]
+    end
+
+    test "get_user!/1 returns the user with given id" do
+      user = user_fixture()
+      assert Accounts.get_user!(user.id) == user
+    end
+
+    test "create_user/1 with valid data creates a user" do
+      valid_attrs = %{email: "test@example.com", name: "some name"}
+
+      assert {:ok, %User{} = user} = Accounts.create_user(valid_attrs)
+      assert user.name == "some name"
+    end
+
+    test "create_user/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Accounts.create_user(@invalid_attrs)
+    end
+
+    test "update_user/2 with valid data updates the user" do
+      user = user_fixture()
+      update_attrs = %{name: "some updated name"}
+
+      assert {:ok, %User{} = user} = Accounts.update_user(user, update_attrs)
+      assert user.name == "some updated name"
+    end
+
+    test "update_user/2 with invalid data returns error changeset" do
+      user = user_fixture()
+      assert {:error, %Ecto.Changeset{}} = Accounts.update_user(user, @invalid_attrs)
+      assert user == Accounts.get_user!(user.id)
+    end
+
+    test "delete_user/1 deletes the user" do
+      user = user_fixture()
+      assert {:ok, %User{}} = Accounts.delete_user(user)
+      assert_raise Ecto.NoResultsError, fn -> Accounts.get_user!(user.id) end
+    end
+
+    test "change_user/1 returns a user changeset" do
+      user = user_fixture()
+      assert %Ecto.Changeset{} = Accounts.change_user(user)
     end
   end
 end
