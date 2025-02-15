@@ -1,8 +1,8 @@
 defmodule LunchWeb.UserLoginLiveTest do
   use LunchWeb.ConnCase
 
-  import Phoenix.LiveViewTest
   import Lunch.AccountsFixtures
+  import Phoenix.LiveViewTest
 
   describe "Log in page" do
     test "renders log in page", %{conn: conn} do

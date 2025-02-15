@@ -7,6 +7,7 @@
 @import "./other/phoenix_html.css";
 @import "./other/upload.css";
 
+@plugin "@tailwindcss/forms";
 @plugin "./tailwind/heroicons";
 
 @source "../js";

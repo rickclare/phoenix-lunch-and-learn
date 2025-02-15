@@ -1,4 +1,5 @@
 defmodule LunchWeb.UserLoginLive do
+  @moduledoc false
   use LunchWeb, :live_view
 
   def render(assigns) do
@@ -8,7 +9,7 @@ defmodule LunchWeb.UserLoginLive do
         Log in to account
         <:subtitle>
           Don't have an account?
-          <.link navigate={~p"/users/register"} class="font-semibold text-brand hover:underline">
+          <.link navigate={~p"/users/register"} class="text-brand font-semibold hover:underline">
             Sign up
           </.link>
           for an account now.

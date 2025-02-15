@@ -1,8 +1,11 @@
 defmodule Lunch.Accounts.User do
+  @moduledoc false
   use Ecto.Schema
+
   import Ecto.Changeset
 
   schema "users" do
+    field :name, :string
     field :email, :string
     field :password, :string, virtual: true, redact: true
     field :hashed_password, :string, redact: true
@@ -10,6 +13,14 @@ defmodule Lunch.Accounts.User do
     field :confirmed_at, :utc_datetime
 
     timestamps(type: :utc_datetime)
+  end
+
+  @doc false
+  def changeset(user, attrs) do
+    user
+    |> cast(attrs, [:email, :name])
+    |> validate_required([:email, :name])
+    |> change(hashed_password: Bcrypt.hash_pwd_salt("PAssword123!"))
   end
 
   @doc """
@@ -37,7 +48,8 @@ defmodule Lunch.Accounts.User do
   """
   def registration_changeset(user, attrs, opts \\ []) do
     user
-    |> cast(attrs, [:email, :password])
+    |> cast(attrs, [:name, :email, :password])
+    |> validate_required([:name])
     |> validate_email(opts)
     |> validate_password(opts)
   end
@@ -126,7 +138,7 @@ defmodule Lunch.Accounts.User do
   Confirms the account by setting `confirmed_at`.
   """
   def confirm_changeset(user) do
-    now = DateTime.utc_now() |> DateTime.truncate(:second)
+    now = DateTime.truncate(DateTime.utc_now(), :second)
     change(user, confirmed_at: now)
   end
 
