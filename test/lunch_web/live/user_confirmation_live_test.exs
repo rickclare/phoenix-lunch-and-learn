@@ -1,8 +1,8 @@
 defmodule LunchWeb.UserConfirmationLiveTest do
   use LunchWeb.ConnCase
 
-  import Phoenix.LiveViewTest
   import Lunch.AccountsFixtures
+  import Phoenix.LiveViewTest
 
   alias Lunch.Accounts
   alias Lunch.Repo
@@ -55,9 +55,7 @@ defmodule LunchWeb.UserConfirmationLiveTest do
                "User confirmation link is invalid or it has expired"
 
       # when logged in
-      conn =
-        build_conn()
-        |> log_in_user(user)
+      conn = log_in_user(build_conn(), user)
 
       {:ok, lv, _html} = live(conn, ~p"/users/confirm/#{token}")
 

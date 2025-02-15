@@ -1,8 +1,8 @@
 defmodule LunchWeb.UserResetPasswordLiveTest do
   use LunchWeb.ConnCase
 
-  import Phoenix.LiveViewTest
   import Lunch.AccountsFixtures
+  import Phoenix.LiveViewTest
 
   alias Lunch.Accounts
 

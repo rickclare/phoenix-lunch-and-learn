@@ -1,4 +1,5 @@
 defmodule Lunch.Accounts.UserNotifier do
+  @moduledoc false
   import Swoosh.Email
 
   alias Lunch.Mailer
