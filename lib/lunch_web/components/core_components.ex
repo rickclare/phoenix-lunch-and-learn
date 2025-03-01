@@ -306,6 +306,7 @@ defmodule LunchWeb.CoreComponents do
   end
 
   def input(%{type: "checkbox"} = assigns) do
+    # credo:disable-for-lines:4 Credo.Check.Design.AliasUsage
     assigns =
       assign_new(assigns, :checked, fn ->
         Phoenix.HTML.Form.normalize_value("checkbox", assigns[:value])

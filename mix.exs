@@ -92,6 +92,18 @@ defmodule Lunch.MixProject do
         "bun css --minify",
         "bun js --minify",
         "phx.digest"
+      ],
+      "dev.checks": [
+        "format --dry-run --check-formatted",
+        "gettext.extract --check-up-to-date",
+        "compile --warnings-as-errors --all-warnings",
+        "credo --all --format=oneline --min-priority=low",
+        # "dialyzer --quiet",
+        "cmd '_build/bun --silent install'",
+        ~s{cmd '_build/bun --bun prettier --log-level=warn --check --ignore-unknown "**"'},
+        "cmd '_build/bun --bun stylelint assets/css/**/*.css'"
+        # "cmd '_build/bun --bun eslint'",
+        # "cmd '_build/bun --bun tsc --noEmit --project tsconfig.json'"
       ]
     ]
   end

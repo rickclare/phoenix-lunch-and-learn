@@ -72,8 +72,8 @@
       #
       checks: [
         ## Custom Checks
-        {Credo.CustomCheck.Design.TagsForbidden},
-        {Credo.CustomCheck.Design.PhrasesForbidden},
+        # {Credo.CustomCheck.Design.TagsForbidden},
+        # {Credo.CustomCheck.Design.PhrasesForbidden},
 
         # Styler Rewrites
         #

@@ -2,7 +2,7 @@ services:
   web:
     build: .
     container_name: phoenix-lunch-and-learn
-    image: ghcr.io/rickclare/phoenix-lunch-and-learn:1.1
+    image: ghcr.io/rickclare/phoenix-lunch-and-learn:1.2
     platform: linux/amd64
     ports:
       - "4000:4000"
