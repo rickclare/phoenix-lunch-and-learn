@@ -1,9 +1,22 @@
+## NOTE: For multi-platform builds in OrbStack, you'll need to enable"containerd image store",
+## by adding the following settings to "OrbStack Settings > Docker"
+## (see https://github.com/orbstack/orbstack/issues/887#issuecomment-2388088120)
+#
+# {
+#   "features" : {
+#     "containerd-snapshotter" : true
+#   }
+# }
+#
 services:
   web:
-    build: .
+    build:
+      context: .
+      platforms:
+        - linux/amd64
+        - linux/arm64
     container_name: phoenix-lunch-and-learn
     image: ghcr.io/rickclare/phoenix-lunch-and-learn:1.2
-    platform: linux/amd64
     ports:
       - "4000:4000"
       - "4443:4443"

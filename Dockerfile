@@ -2,11 +2,15 @@ ARG ELIXIR_VERSION=1.18.2
 ARG OTP_VERSION=27.2.4
 ARG DEBIAN_VERSION=bookworm-20250203-slim
 ARG BUN_VERSION=1.2.4
+ARG TARGETPLATFORM
+ARG BUILDPLATFORM
 
-ARG BUILDER_IMAGE="docker.io/hexpm/elixir:${ELIXIR_VERSION}-erlang-${OTP_VERSION}-debian-${DEBIAN_VERSION}"
+FROM docker.io/hexpm/elixir:${ELIXIR_VERSION}-erlang-${OTP_VERSION}-debian-${DEBIAN_VERSION}
 
-FROM ${BUILDER_IMAGE}
+# Copy these ARGs into the build stage
 ARG BUN_VERSION
+ARG TARGETPLATFORM
+ARG BUILDPLATFORM
 
 RUN apt-get update -qq \
   && apt-get install -yqq build-essential git brotli \
@@ -18,9 +22,6 @@ RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen
 
 RUN curl -fsSL https://bun.sh/install | bash -s "bun-v${BUN_VERSION}"
 
-# Increase compatibility for Apple Silicon MacOS builds
-ENV ERL_AFLAGS="+JMsingle true"
-
 RUN mix local.hex --force \
   && mix local.rebar --force
 
@@ -30,7 +31,13 @@ COPY mix.exs mix.lock ./
 RUN mix deps.get
 
 COPY config config
-RUN mix deps.compile
+
+# NOTE: Setting ERL_AFLAGS increases compatibility when creating a linux/amd64 build
+# when running the build on ARM processor (e.g. Apple MacOS Silicon)
+RUN if [ "$BUILDPLATFORM" = "linux/arm64" ] && [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
+  ERL_AFLAGS="+JMsingle true" mix deps.compile; \
+  else mix deps.compile; \
+  fi
 
 COPY bun.lock package.json ./
 COPY assets/package.json assets/
