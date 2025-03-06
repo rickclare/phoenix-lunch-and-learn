@@ -35,7 +35,7 @@ defmodule Lunch.MixProject do
       {:phoenix, "~> 1.7.20"},
       {:phoenix_ecto, "~> 4.5"},
       {:ecto_sql, "~> 3.10"},
-      {:ecto_sqlite3, "~> 0.17"},
+      {:ecto_sqlite3, "~> 0.19"},
       {:phoenix_html, "~> 4.1"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_live_view, "~> 1.0.0"},
@@ -55,7 +55,7 @@ defmodule Lunch.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.26"},
       {:jason, "~> 1.2"},
-      {:dns_cluster, "~> 0.1.1"},
+      {:dns_cluster, "~> 0.2"},
       {:bandit, "~> 1.5"},
       #
       {:credo, "~> 1.7.7", only: [:dev, :test], runtime: false},
