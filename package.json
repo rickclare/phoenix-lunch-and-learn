@@ -9,11 +9,11 @@
     "deps:update": "bun x --bun npm-check-updates@latest --interactive --root --workspace=assets --format=group --packageManager=bun --install=always"
   },
   "devDependencies": {
-    "prettier": "^3.5.2",
+    "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
-    "prettier-plugin-toml": "^2.0.2",
-    "stylelint": "^16.15.0",
-    "stylelint-config-standard": "^37.0.0",
+    "prettier-plugin-toml": "^2.0.4",
+    "stylelint": "^16.18.0",
+    "stylelint-config-standard": "^38.0.0",
     "stylelint-prettier": "^5.0.3",
     "watchman": "^1.0.0"
   },

@@ -2,11 +2,11 @@
   "name": "assets",
   "private": true,
   "dependencies": {
-    "@tailwindcss/cli": "^4.0.9",
+    "@tailwindcss/cli": "^4.1.3",
     "phoenix": "workspace:*",
     "phoenix_html": "workspace:*",
     "phoenix_live_view": "workspace:*",
-    "tailwindcss": "^4.0.9",
+    "tailwindcss": "^4.1.3",
     "topbar": "^3.0.0"
   }
 }
