@@ -8,7 +8,7 @@
 import Config
 
 config :bun,
-  version: "1.2.4",
+  version: "1.2.7",
   js: [
     args: ~w(
       build js/app.js
