@@ -56,6 +56,19 @@ config :lunch, LunchWeb.Endpoint,
   pubsub_server: Lunch.PubSub,
   live_view: [signing_salt: "i8pDFt92"]
 
+config :lunch, :scopes,
+  user: [
+    default: true,
+    module: Lunch.Accounts.Scope,
+    assign_key: :current_scope,
+    access_path: [:user, :id],
+    schema_key: :user_id,
+    schema_type: :id,
+    schema_table: :users,
+    test_data_fixture: Lunch.AccountsFixtures,
+    test_login_helper: :register_and_log_in_user
+  ]
+
 config :lunch,
   ecto_repos: [Lunch.Repo],
   generators: [timestamp_type: :utc_datetime]
