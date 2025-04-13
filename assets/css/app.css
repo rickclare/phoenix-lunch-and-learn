@@ -1,21 +1,26 @@
-@import "tailwindcss";
+/* See the Tailwind configuration guide for advanced usage
+   https://tailwindcss.com/docs/configuration */
 
-/* tailwind extras */
-@import "./tailwind/variants.css";
-
-/* other */
+@import "tailwindcss" source(none);
 @import "./other/phoenix_html.css";
 @import "./other/upload.css";
-
-@plugin "./tailwind/heroicons";
 
 @source "../js";
 @source "../../lib/lunch_web";
 
-/*
- * Make LiveView wrapper divs transparent for layout.
- * This makes it possible to use LiveViews as flex children for example.
- */
+/* A Tailwind plugin that makes "hero-#{ICON}" classes available.
+   The heroicons installation itself is managed by your mix.exs */
+@plugin "../vendor/heroicons";
+
+/* DaisyUI plugin */
+@plugin "daisyui";
+
+/* Add variants based on LiveView classes */
+@custom-variant phx-click-loading ([".phx-click-loading&", ".phx-click-loading &"]);
+@custom-variant phx-submit-loading ([".phx-submit-loading&", ".phx-submit-loading &"]);
+@custom-variant phx-change-loading ([".phx-change-loading&", ".phx-change-loading &"]);
+
+/* Make LiveView wrapper divs transparent for layout */
 [data-phx-root-id] {
   display: contents;
 }

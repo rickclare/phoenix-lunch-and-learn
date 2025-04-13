@@ -4,19 +4,25 @@ defmodule LunchWeb.ImageLive do
 
   def render(assigns) do
     ~H"""
-    <div>
-      <form phx-change="update">
-        <input type="range" min="10" max="600" name="width" value={@width} />
-        {@width}px
-      </form>
+    <Layouts.app flash={@flash}>
+      <.header>{@page_title}</.header>
 
-      <img phx-click="max" src={~p"/images/logo.svg"} width={@width} />
-    </div>
+      <:breadcrumb>{@page_title}</:breadcrumb>
+
+      <div>
+        <form phx-change="update">
+          <input type="range" min="10" max="600" name="width" value={@width} />
+          {@width}px
+        </form>
+
+        <img phx-click="max" src={~p"/images/logo.svg"} width={@width} />
+      </div>
+    </Layouts.app>
     """
   end
 
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, width: 100)}
+    {:ok, assign(socket, width: 100, page_title: "Image editor")}
   end
 
   def handle_event("update", %{"width" => width}, socket) do

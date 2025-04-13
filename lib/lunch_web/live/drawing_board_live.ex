@@ -5,28 +5,36 @@ defmodule LunchWeb.DrawingBoardLive do
   def mount(_params, _session, socket) do
     if connected?(socket), do: Phoenix.PubSub.subscribe(Lunch.PubSub, "drawing")
 
-    {:ok, assign(socket, points: [], color: random_color())}
+    {:ok, assign(socket, points: [], color: random_color(), page_title: "Drawing board")}
   end
 
   def render(assigns) do
     ~H"""
-    <h1>Collaborative Drawing Board</h1>
+    <Layouts.app flash={@flash}>
+      <.header>Collaborative drawing board</.header>
 
-    <div id="drawing-board" phx-hook="DrawingBoard" phx-update="ignore" data-color={@color}>
-      <canvas width="600" height="400" class="rounded border"></canvas>
-    </div>
+      <:breadcrumb>{@page_title}</:breadcrumb>
 
-    <label :for={color <- colors()}>
-      <input
-        type="radio"
-        name="color"
-        phx-click="change_color"
-        phx-value={color}
-        value={color}
-        checked={color == @color}
-      />
-      {color}
-    </label>
+      <div class="flex gap-2">
+        <div id="drawing-board" phx-hook="DrawingBoard" phx-update="ignore" data-color={@color}>
+          <canvas width="600" height="400" class="rounded border"></canvas>
+        </div>
+
+        <div class="grid">
+          <label :for={color <- colors()} class="flex items-center gap-1">
+            <input
+              type="radio"
+              name="color"
+              phx-click="change_color"
+              phx-value={color}
+              value={color}
+              checked={color == @color}
+            />
+            <span>{color}</span>
+          </label>
+        </div>
+      </div>
+    </Layouts.app>
     """
   end
 

@@ -7,6 +7,7 @@
 # General application configuration
 import Config
 
+# Configure bun (the version is required)
 config :bun,
   version: "1.2.9",
   js: [
@@ -31,7 +32,7 @@ config :bun,
   ]
 
 # Configures Elixir's Logger
-config :logger, :console,
+config :logger, :default_formatter,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
@@ -59,7 +60,10 @@ config :lunch,
   ecto_repos: [Lunch.Repo],
   generators: [timestamp_type: :utc_datetime]
 
+# Import environment specific config. This must remain at the bottom
+
 # Use Jason for JSON parsing in Phoenix
+# of this file so it overrides the configuration defined above.
 config :phoenix, :json_library, Jason
 
 import_config "#{config_env()}.exs"

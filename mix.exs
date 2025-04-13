@@ -9,7 +9,8 @@ defmodule Lunch.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      listeners: [Phoenix.CodeReloader]
     ]
   end
 
@@ -32,14 +33,17 @@ defmodule Lunch.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.7.21"},
+      {:phoenix, "~> 1.8.0-rc", override: true},
       {:phoenix_ecto, "~> 4.5"},
       {:ecto_sql, "~> 3.10"},
       {:ecto_sqlite3, "~> 0.19"},
       {:phoenix_html, "~> 4.1"},
       {:phoenix_live_reload, "~> 1.6", only: :dev},
-      {:phoenix_live_view, "~> 1.0.0"},
-      {:floki, ">= 0.30.0", only: :test},
+      #
+      # {:phoenix_live_view, "~> 1.0"},
+      {:phoenix_live_view, github: "phoenixframework/phoenix_live_view", override: true},
+      #
+      {:lazy_html, ">= 0.1.0", only: :test},
       {:phoenix_live_dashboard, "~> 0.8.3"},
       {:bun, "~> 1.4", runtime: Mix.env() in [:dev, :e2e]},
       {:heroicons,
@@ -50,7 +54,7 @@ defmodule Lunch.MixProject do
        compile: false,
        depth: 1},
       {:swoosh, "~> 1.5"},
-      {:finch, "~> 0.13"},
+      {:req, "~> 0.5"},
       {:telemetry_metrics, "~> 1.0"},
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.26"},

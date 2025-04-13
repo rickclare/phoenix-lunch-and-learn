@@ -12,8 +12,6 @@ defmodule Lunch.Application do
       Lunch.Repo,
       {DNSCluster, query: Application.get_env(:lunch, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: Lunch.PubSub},
-      # Start the Finch HTTP client for sending emails
-      {Finch, name: Lunch.Finch},
       # Start a worker by calling: Lunch.Worker.start_link(arg)
       # {Lunch.Worker, arg},
       # Start to serve requests, typically the last entry

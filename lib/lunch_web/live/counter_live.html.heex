@@ -1,13 +1,19 @@
-<div class="w-50 grid">
-  <button phx-click="increment" class="rounded bg-red-500 p-1 text-white hover:bg-red-700">
-    Up
-  </button>
+<Layouts.app flash={@flash}>
+  <.header>{@page_title}</.header>
 
-  <span class="text-lg font-bold">
-    Count: {@count}
-  </span>
+  <:breadcrumb>{@page_title}</:breadcrumb>
 
-  <button phx-click="decrement" class="rounded bg-green-500 p-1 text-white hover:bg-green-700">
-    Down
-  </button>
-</div>
+  <div class="w-50 grid gap-1">
+    <.button phx-click="increment" variant="primary">
+      Up
+    </.button>
+
+    <span class="font-semibold">
+      Count: {@count}
+    </span>
+
+    <.button phx-click="decrement" variant="secondary">
+      Down
+    </.button>
+  </div>
+</Layouts.app>
