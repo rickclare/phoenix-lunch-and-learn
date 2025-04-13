@@ -1,4 +1,5 @@
 defmodule LunchWeb.UserLive.Show do
+  @moduledoc false
   use LunchWeb, :live_view
 
   alias Lunch.Accounts
@@ -11,10 +12,10 @@ defmodule LunchWeb.UserLive.Show do
         User {@user.id}
         <:subtitle>This is a user record from your database.</:subtitle>
         <:actions>
-          <.button navigate={~p"/users"}>
+          <.button navigate={~p"/ops/users"}>
             <.icon name="hero-arrow-left" />
           </.button>
-          <.button variant="primary" navigate={~p"/users/#{@user}/edit?return_to=show"}>
+          <.button variant="primary" navigate={~p"/ops/users/#{@user}/edit?return_to=show"}>
             <.icon name="hero-pencil-square" /> Edit user
           </.button>
         </:actions>
@@ -22,6 +23,7 @@ defmodule LunchWeb.UserLive.Show do
 
       <.list>
         <:item title="Name">{@user.name}</:item>
+        <:item title="Email">{@user.email}</:item>
       </.list>
     </Layouts.app>
     """
