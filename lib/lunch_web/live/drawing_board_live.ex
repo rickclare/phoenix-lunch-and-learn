@@ -10,7 +10,7 @@ defmodule LunchWeb.DrawingBoardLive do
 
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={@flash}>
+    <Layouts.app flash={@flash} current_scope={@current_scope}>
       <.header>Collaborative drawing board</.header>
 
       <:breadcrumb>{@page_title}</:breadcrumb>

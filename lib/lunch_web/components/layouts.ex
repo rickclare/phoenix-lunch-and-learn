@@ -13,6 +13,8 @@ defmodule LunchWeb.Layouts do
 
   def app(assigns) do
     ~H"""
+    <.navbar current_scope={@current_scope} />
+
     <main class="p-4 sm:px-6 lg:px-8">
       <div class="mx-auto max-w-2xl">
         <div :if={assigns[:breadcrumb]} class="breadcrumbs text-sm">
@@ -30,6 +32,29 @@ defmodule LunchWeb.Layouts do
     </main>
 
     <.flash_group flash={@flash} />
+    """
+  end
+
+  def navbar(assigns) do
+    ~H"""
+    <nav class="navbar">
+      <ul class="menu menu-horizontal navbar-start relative z-10 flex w-full items-center gap-2">
+        <li><.link href={~p"/"}>Home</.link></li>
+        <li><.link navigate={~p"/ops/users"} class="italic">Operations</.link></li>
+
+        <%= if @current_scope do %>
+          <li class="font-semibold">{@current_scope.user.email}</li>
+          <li><.link href={~p"/users/settings"}>Settings</.link></li>
+          <li><.link href={~p"/users/log-out"} method="delete">Log out</.link></li>
+        <% else %>
+          <li><.link navigate={~p"/users/register"}>Register</.link></li>
+          <li><.link navigate={~p"/users/log-in"}>Log in</.link></li>
+        <% end %>
+      </ul>
+      <div class="navbar-end">
+        <.theme_toggle />
+      </div>
+    </nav>
     """
   end
 

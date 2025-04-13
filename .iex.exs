@@ -1,5 +1,10 @@
 import IEx.Helpers
 
+alias Lunch.Accounts
+alias Lunch.Accounts.User
+alias Lunch.Accounts.UserToken
+alias Lunch.Repo
+
 IEx.configure(
   auto_reload: true,
   default_prompt: "%prefix:%counter>",
