@@ -1,4 +1,5 @@
 defmodule LunchWeb.UserLive.Form do
+  @moduledoc false
   use LunchWeb, :live_view
 
   alias Lunch.Accounts
@@ -15,6 +16,7 @@ defmodule LunchWeb.UserLive.Form do
 
       <.form for={@form} id="user-form" phx-change="validate" phx-submit="save">
         <.input field={@form[:name]} type="text" label="Name" />
+        <.input field={@form[:email]} type="email" label="Email" />
         <footer>
           <.button phx-disable-with="Saving..." variant="primary">Save User</.button>
           <.button navigate={return_path(@return_to, @user)}>Cancel</.button>
@@ -89,6 +91,6 @@ defmodule LunchWeb.UserLive.Form do
     end
   end
 
-  defp return_path("index", _user), do: ~p"/users"
-  defp return_path("show", user), do: ~p"/users/#{user}"
+  defp return_path("index", _user), do: ~p"/ops/users"
+  defp return_path("show", user), do: ~p"/ops/users/#{user}"
 end

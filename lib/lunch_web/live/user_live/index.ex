@@ -1,4 +1,5 @@
 defmodule LunchWeb.UserLive.Index do
+  @moduledoc false
   use LunchWeb, :live_view
 
   alias Lunch.Accounts
@@ -10,7 +11,7 @@ defmodule LunchWeb.UserLive.Index do
       <.header>
         Listing Users
         <:actions>
-          <.button variant="primary" navigate={~p"/users/new"}>
+          <.button variant="primary" navigate={~p"/ops/users/new"}>
             <.icon name="hero-plus" /> New User
           </.button>
         </:actions>
@@ -19,14 +20,14 @@ defmodule LunchWeb.UserLive.Index do
       <.table
         id="users"
         rows={@streams.users}
-        row_click={fn {_id, user} -> JS.navigate(~p"/users/#{user}") end}
+        row_click={fn {_id, user} -> JS.navigate(~p"/ops/users/#{user}") end}
       >
         <:col :let={{_id, user}} label="Name">{user.name}</:col>
         <:action :let={{_id, user}}>
           <div class="sr-only">
-            <.link navigate={~p"/users/#{user}"}>Show</.link>
+            <.link navigate={~p"/ops/users/#{user}"}>Show</.link>
           </div>
-          <.link navigate={~p"/users/#{user}/edit"}>Edit</.link>
+          <.link navigate={~p"/ops/users/#{user}/edit"}>Edit</.link>
         </:action>
         <:action :let={{id, user}}>
           <.link
