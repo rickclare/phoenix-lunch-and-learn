@@ -19,7 +19,7 @@ config :lunch, Lunch.Repo, database: "priv/db/development.db"
 config :lunch, LunchWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   http: [ip: {0, 0, 0, 0}, port: "PORT" |> System.get_env("4000") |> String.to_integer()],
-  url: [scheme: "https", host: "localhost"],
+  url: [scheme: "https", host: System.get_env("PHX_HOST", "localhost")],
   https: [
     port: 4443,
     cipher_suite: :strong,
