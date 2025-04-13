@@ -22,6 +22,11 @@ defmodule LunchWeb.Router do
     live "/counter", CounterLive
     live "/image", ImageLive
     live "/drawing", DrawingBoardLive
+
+    live "/users", UserLive.Index, :index
+    live "/users/new", UserLive.Form, :new
+    live "/users/:id", UserLive.Show, :show
+    live "/users/:id/edit", UserLive.Form, :edit
   end
 
   # Other scopes may use custom stacks.
