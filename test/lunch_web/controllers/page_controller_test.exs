@@ -1,5 +1,5 @@
 defmodule LunchWeb.PageControllerTest do
-  use LunchWeb.ConnCase
+  use LunchWeb.ConnCase, async: true
 
   test "GET /", %{conn: conn} do
     conn = get(conn, ~p"/")

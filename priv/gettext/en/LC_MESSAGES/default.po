@@ -11,43 +11,32 @@ msgstr ""
 "Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: lib/lunch_web/components/core_components.ex:486
+#: lib/lunch_web/components/core_components.ex:338
 #, elixir-autogen, elixir-format
 msgid "Actions"
 msgstr ""
 
-#: lib/lunch_web/components/core_components.ex:162
+#: lib/lunch_web/components/layouts.ex:60
 #, elixir-autogen, elixir-format
 msgid "Attempting to reconnect"
 msgstr ""
 
-#: lib/lunch_web/components/core_components.ex:152
-#, elixir-autogen, elixir-format
-msgid "Error!"
-msgstr ""
-
-#: lib/lunch_web/components/core_components.ex:175
+#: lib/lunch_web/components/layouts.ex:72
 #, elixir-autogen, elixir-format
 msgid "Hang in there while we get back on track"
 msgstr ""
 
-#: lib/lunch_web/components/core_components.ex:169
+#: lib/lunch_web/components/layouts.ex:67
 #, elixir-autogen, elixir-format
 msgid "Something went wrong!"
 msgstr ""
 
-#: lib/lunch_web/components/core_components.ex:151
-#, elixir-autogen, elixir-format
-msgid "Success!"
-msgstr ""
-
-#: lib/lunch_web/components/core_components.ex:156
+#: lib/lunch_web/components/layouts.ex:55
 #, elixir-autogen, elixir-format
 msgid "We can't find the internet"
 msgstr ""
 
-#: lib/lunch_web/components/core_components.ex:77
-#: lib/lunch_web/components/core_components.ex:131
+#: lib/lunch_web/components/core_components.ex:76
 #, elixir-autogen, elixir-format
 msgid "close"
 msgstr ""

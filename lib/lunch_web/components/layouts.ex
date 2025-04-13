@@ -18,7 +18,7 @@ defmodule LunchWeb.Layouts do
         <div :if={assigns[:breadcrumb]} class="breadcrumbs text-sm">
           <ul>
             <li>
-              <.link class="text-blue-600" navigate={~p"/"}>Home</.link>
+              <.link class="text-blue-600" href={~p"/"}>Home</.link>
             </li>
 
             <li :for={item <- assigns[:breadcrumb] || []}>{render_slot(item)}</li>
