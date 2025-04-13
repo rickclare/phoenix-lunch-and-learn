@@ -49,7 +49,12 @@ defmodule LunchWeb.UserLive.Registration do
   def mount(_params, _session, socket) do
     changeset = Accounts.change_user_email(%User{})
 
-    {:ok, assign_form(socket, changeset), temporary_assigns: [form: nil]}
+    socket =
+      socket
+      |> assign(page_title: "Register")
+      |> assign_form(changeset)
+
+    {:ok, socket, temporary_assigns: [form: nil]}
   end
 
   def handle_event("save", %{"user" => user_params}, socket) do

@@ -7,7 +7,7 @@ defmodule LunchWeb.UserLive.Show do
   @impl true
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={@flash}>
+    <Layouts.app flash={@flash} current_scope={@current_scope}>
       <.header>
         User {@user.id}
         <:subtitle>This is a user record from your database.</:subtitle>
