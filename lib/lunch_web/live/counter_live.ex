@@ -11,6 +11,8 @@ defmodule LunchWeb.CounterLive do
   end
 
   def handle_event("decrement", _value, socket) do
+    if socket.assigns.count < 1, do: raise("Cannot be decrement below 0")
+
     {:noreply, update(socket, :count, fn i -> i - 1 end)}
   end
 end

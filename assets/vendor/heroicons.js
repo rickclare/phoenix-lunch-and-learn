@@ -2,7 +2,7 @@ const plugin = require("tailwindcss/plugin")
 const fs = require("fs")
 const path = require("path")
 
-module.exports = plugin(function ({ matchComponents, theme }) {
+module.exports = plugin(function ({ matchUtilities, theme }) {
   const iconsDir = path.join(__dirname, "../../deps/heroicons/optimized")
   const values = {}
   const icons = [
@@ -17,7 +17,7 @@ module.exports = plugin(function ({ matchComponents, theme }) {
       values[name] = { name, fullPath: path.join(iconsDir, dir, file) }
     })
   })
-  matchComponents(
+  matchUtilities(
     {
       hero: ({ name, fullPath }) => {
         let content = fs
