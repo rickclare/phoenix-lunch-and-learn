@@ -3,7 +3,7 @@ defmodule Lunch.Repo.Migrations.CreateUsersAuthTables do
 
   def change do
     alter table(:users) do
-      add :email, :citext, null: false, collate: :nocase
+      add :email, :string, null: false, collate: :nocase
       add :hashed_password, :string
       add :confirmed_at, :utc_datetime
     end

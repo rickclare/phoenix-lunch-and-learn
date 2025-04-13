@@ -1,9 +1,9 @@
-<Layouts.app flash={@flash}>
+<Layouts.app flash={@flash} current_scope={@current_scope}>
   <.header>Lunch & Learn</.header>
 
   <div class="mt-2 grid gap-2">
-    <.link href={~p"/counter"} class="underline">Counter</.link>
-    <.link href={~p"/image"} class="underline">Image editor</.link>
-    <.link href={~p"/drawing"} class="underline">Drawing board</.link>
+    <.link navigate={~p"/counter"} class="underline">Counter</.link>
+    <.link navigate={~p"/image"} class="underline">Image editor</.link>
+    <.link navigate={~p"/drawing"} class="underline">Drawing board</.link>
   </div>
 </Layouts.app>
