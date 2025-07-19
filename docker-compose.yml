@@ -23,6 +23,7 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
+      - /app/assets/node_modules
       - /app/deps
       - /app/_build
     # develop:

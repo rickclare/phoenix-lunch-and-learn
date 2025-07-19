@@ -2,12 +2,12 @@
   "name": "assets",
   "private": true,
   "dependencies": {
-    "@tailwindcss/cli": "^4.1.7",
+    "@tailwindcss/cli": "^4.1.11",
     "daisyui": "^5.0.35",
     "phoenix": "workspace:*",
     "phoenix_html": "workspace:*",
     "phoenix_live_view": "workspace:*",
-    "tailwindcss": "^4.1.7",
+    "tailwindcss": "^4.1.11",
     "topbar": "^3.0.0"
   }
 }

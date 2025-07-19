@@ -1,7 +1,7 @@
-ARG ELIXIR_VERSION=1.18.3
-ARG OTP_VERSION=27.3.4
-ARG DEBIAN_VERSION=bookworm-20250428-slim
-ARG BUN_VERSION=1.2.13
+ARG ELIXIR_VERSION=1.18.4
+ARG OTP_VERSION=28.0.2
+ARG DEBIAN_VERSION=bookworm-20250630-slim
+ARG BUN_VERSION=1.2.19
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 
@@ -22,8 +22,12 @@ RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen
 
 RUN curl -fsSL https://bun.sh/install | bash -s "bun-v${BUN_VERSION}"
 
-RUN mix local.hex --force \
-  && mix local.rebar --force
+# NOTE: Setting ERL_AFLAGS increases compatibility when creating a linux/amd64 build
+# when running the build on ARM processor (e.g. Apple MacOS Silicon)
+# (see https://hexdocs.pm/mix/Mix.Tasks.Release.html#module-using-images)
+ENV ERL_AFLAGS="+JMsingle true"
+
+RUN mix do local.hex --force, local.rebar --force
 
 WORKDIR /app
 
@@ -31,13 +35,7 @@ COPY mix.exs mix.lock ./
 RUN mix deps.get
 
 COPY config config
-
-# NOTE: Setting ERL_AFLAGS increases compatibility when creating a linux/amd64 build
-# when running the build on ARM processor (e.g. Apple MacOS Silicon)
-RUN if [ "$BUILDPLATFORM" = "linux/arm64" ] && [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
-  ERL_AFLAGS="+JMsingle true" mix deps.compile; \
-  else mix deps.compile; \
-  fi
+RUN mix deps.compile
 
 COPY bun.lock package.json ./
 COPY assets/package.json assets/
