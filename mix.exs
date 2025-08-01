@@ -10,6 +10,7 @@ defmodule Lunch.MixProject do
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps(),
+      compilers: [:phoenix_live_view] ++ Mix.compilers(),
       listeners: [Phoenix.CodeReloader]
     ]
   end
@@ -40,7 +41,7 @@ defmodule Lunch.MixProject do
       {:phoenix_html, "~> 4.1"},
       {:phoenix_live_reload, "~> 1.6", only: :dev},
       #
-      # {:phoenix_live_view, "~> 1.0"},
+      # {:phoenix_live_view, "~> 1.1"},
       {:phoenix_live_view, github: "phoenixframework/phoenix_live_view", override: true},
       #
       {:lazy_html, ">= 0.1.0", only: :test},
