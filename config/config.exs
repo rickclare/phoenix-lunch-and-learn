@@ -19,7 +19,13 @@ config :bun,
         --external /images/*
     ),
     cd: Path.expand("../assets", __DIR__),
-    env: %{}
+    env: %{
+      "NODE_PATH" =>
+        Enum.join(
+          [Path.expand("../deps", __DIR__), Mix.Project.build_path()],
+          ":"
+        )
+    }
   ],
   css: [
     args: ~w(

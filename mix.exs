@@ -10,6 +10,7 @@ defmodule Lunch.MixProject do
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps(),
+      compilers: [:phoenix_live_view] ++ Mix.compilers(),
       listeners: [Phoenix.CodeReloader]
     ]
   end
@@ -39,10 +40,7 @@ defmodule Lunch.MixProject do
       {:ecto_sqlite3, "~> 0.19"},
       {:phoenix_html, "~> 4.1"},
       {:phoenix_live_reload, "~> 1.6", only: :dev},
-      #
-      # {:phoenix_live_view, "~> 1.0"},
-      {:phoenix_live_view, github: "phoenixframework/phoenix_live_view", override: true},
-      #
+      {:phoenix_live_view, "~> 1.1"},
       {:lazy_html, ">= 0.1.0", only: :test},
       {:phoenix_live_dashboard, "~> 0.8.3"},
       {:bun, "~> 1.4", runtime: Mix.env() in [:dev, :e2e]},
