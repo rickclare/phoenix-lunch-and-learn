@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "*": ["node_modules/*", "../deps/*"],
+      "@/*": ["./*"]
+    },
+    "allowJs": true,
+    "noEmit": true
+  },
+  "include": ["js/**/*"]
+}

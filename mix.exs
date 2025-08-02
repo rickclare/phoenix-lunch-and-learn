@@ -25,6 +25,12 @@ defmodule Lunch.MixProject do
     ]
   end
 
+  def cli do
+    [
+      preferred_envs: [precommit: :test]
+    ]
+  end
+
   # Specifies which paths to compile per environment.
   defp elixirc_paths(:test), do: ["lib", "test/support"]
   defp elixirc_paths(_), do: ["lib"]
@@ -94,6 +100,12 @@ defmodule Lunch.MixProject do
         "bun css --minify",
         "bun js --minify",
         "phx.digest"
+      ],
+      precommit: [
+        "compile --warning-as-errors",
+        "deps.unlock --unused",
+        "format",
+        "test"
       ],
       "dev.checks": [
         "format --dry-run --check-formatted",
