@@ -5,7 +5,7 @@ defmodule LunchWeb.DrawingBoardLive do
   def mount(_params, _session, socket) do
     if connected?(socket), do: Phoenix.PubSub.subscribe(Lunch.PubSub, "drawing")
 
-    {:ok, assign(socket, points: [], color: random_color(), page_title: "Drawing board")}
+    {:ok, assign(socket, points: [], color: nil, page_title: "Drawing board")}
   end
 
   def render(assigns) do
@@ -16,11 +16,7 @@ defmodule LunchWeb.DrawingBoardLive do
       <:breadcrumb>{@page_title}</:breadcrumb>
 
       <div class="flex gap-2">
-        <div id="drawing-board" phx-hook=".DrawingBoard" phx-update="ignore" data-color={@color}>
-          <canvas width="600" height="400" class="rounded border"></canvas>
-        </div>
-
-        <.drawing_board_hook />
+        <.drawing_board />
 
         <div class="grid">
           <label :for={color <- colors()} class="flex items-center gap-1">
@@ -74,9 +70,19 @@ defmodule LunchWeb.DrawingBoardLive do
     ]
   end
 
-  # See https://hexdocs.pm/phoenix_live_view/js-interop.html#colocated-hooks-colocated-javascript
-  defp drawing_board_hook(assigns) do
+  ###### Function Components ########
+  defp drawing_board(assigns) do
     ~H"""
+    <div
+      id="drawing-board"
+      phx-hook=".DrawingBoard"
+      phx-update="ignore"
+      data-initial-color={random_color()}
+    >
+      <canvas width="600" height="400" class="rounded border"></canvas>
+    </div>
+
+    <% # See https://hexdocs.pm/phoenix_live_view/js-interop.html#colocated-hooks-colocated-javascript %>
     <script :type={Phoenix.LiveView.ColocatedHook} name=".DrawingBoard">
       export default {
         canvas: null,
@@ -84,61 +90,66 @@ defmodule LunchWeb.DrawingBoardLive do
         color: null,
         drawing: false,
         lastPoint: null,
-        mounted() {
-          this.canvas = this.el.querySelector("canvas")
-          this.ctx = this.canvas.getContext("2d")
-          this.ctx.lineWidth = 2
-          this.color = this.el.dataset.color
 
-          this.addListeners()
-          this.addHandlers()
+        mounted() {
+          this.canvas = this.el.querySelector("canvas");
+          this.ctx = this.canvas.getContext("2d");
+          this.ctx.lineWidth = 2;
+          this.color = this.el.dataset.initialColor;
+
+          this.addListeners();
+          this.addHandlers();
         },
+
         addListeners() {
           this.canvas.addEventListener("mousedown", (event) => {
-            this.drawing = true
-            this.lastPoint = this.currentPosition(event)
-          })
+            this.drawing = true;
+            this.lastPoint = this.currentPosition(event);
+          });
 
           this.canvas.addEventListener("mouseup", () => {
-            this.drawing = false
-            this.lastPoint = null
-          })
+            this.drawing = false;
+            this.lastPoint = null;
+          });
 
           this.canvas.addEventListener("mousemove", (event) => {
-            if (!this.drawing) return
+            if (!this.drawing) return;
 
-            const currentPoint = this.currentPosition(event)
+            const currentPoint = this.currentPosition(event);
 
-            this.drawLine(this.lastPoint, currentPoint, this.color)
-            this.pushEvent("dragged", { from: this.lastPoint, to: currentPoint, color: this.color })
+            this.drawLine(this.lastPoint, currentPoint, this.color);
+            this.pushEvent("dragged", { from: this.lastPoint, to: currentPoint, color: this.color });
 
-            this.lastPoint = currentPoint
-          })
+            this.lastPoint = currentPoint;
+          });
         },
+
         addHandlers() {
           this.handleEvent("newLine", ({ from, to, color }) => {
-            this.drawLine(from, to, color)
-          })
+            this.drawLine(from, to, color);
+          });
 
           this.handleEvent("changeColor", ({ color }) => {
-            this.color = color
-          })
+            this.color = color;
+          });
         },
-        drawLine(from, to, color) {
-          this.ctx.strokeStyle = color
-          this.ctx.beginPath()
-          this.ctx.moveTo(from.x, from.y)
-          this.ctx.lineTo(to.x, to.y)
-          this.ctx.stroke()
-        },
-        currentPosition(event) {
-          const rect = this.canvas.getBoundingClientRect()
-          const x = event.clientX - rect.left
-          const y = event.clientY - rect.top
 
-          return { x, y }
+        drawLine(from, to, color) {
+          this.ctx.strokeStyle = color;
+          this.ctx.beginPath();
+          this.ctx.moveTo(from.x, from.y);
+          this.ctx.lineTo(to.x, to.y);
+          this.ctx.stroke();
         },
-      }
+
+        currentPosition(event) {
+          const rect = this.canvas.getBoundingClientRect();
+          const x = event.clientX - rect.left;
+          const y = event.clientY - rect.top;
+
+          return { x, y };
+        },
+      };
     </script>
     """
   end
