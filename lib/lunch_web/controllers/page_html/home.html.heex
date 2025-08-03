@@ -1,9 +1,25 @@
 <Layouts.app flash={@flash}>
-  <.header>Lunch & Learn</.header>
+  <.header>
+    <span class="flex items-center gap-1">
+      <.icon name="hero-academic-cap" class="size-6" />
+      <span>Lunch & Learn</span>
+    </span>
+  </.header>
 
   <div class="mt-2 grid gap-2">
-    <.link href={~p"/counter"} class="underline">Counter</.link>
-    <.link href={~p"/image"} class="underline">Image editor</.link>
-    <.link href={~p"/drawing"} class="underline">Drawing board</.link>
+    <.link href={~p"/counter"} class="flex items-center gap-1">
+      <.icon name="phosphor-calculator" />
+      <span class="underline">Counter</span>
+    </.link>
+
+    <.link href={~p"/image"} class="flex items-center gap-1">
+      <.icon name="phosphor-image-square" />
+      <span class="underline">Image editor</span>
+    </.link>
+
+    <.link href={~p"/drawing"} class="flex items-center gap-1">
+      <.icon name="phosphor-scribble" />
+      <span class="underline">Drawing board</span>
+    </.link>
   </div>
 </Layouts.app>

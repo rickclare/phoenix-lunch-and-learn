@@ -57,6 +57,15 @@ defmodule Lunch.MixProject do
        app: false,
        compile: false,
        depth: 1},
+      {
+        :phosphor_icons,
+        tag: "main",
+        github: "phosphor-icons/core",
+        sparse: "assets",
+        app: false,
+        compile: false,
+        depth: 1
+      },
       {:swoosh, "~> 1.19"},
       {:req, "~> 0.5"},
       {:telemetry_metrics, "~> 1.0"},

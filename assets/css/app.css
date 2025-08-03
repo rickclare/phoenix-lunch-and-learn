@@ -11,6 +11,7 @@
 /* A Tailwind plugin that makes "hero-#{ICON}" classes available.
    The heroicons installation itself is managed by your mix.exs */
 @plugin "../vendor/heroicons";
+@plugin "../vendor/phosphor_icons";
 
 /* DaisyUI plugin */
 @plugin "daisyui";
