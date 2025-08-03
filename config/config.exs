@@ -19,13 +19,7 @@ config :bun,
         --external /images/*
     ),
     cd: Path.expand("../assets", __DIR__),
-    env: %{
-      "NODE_PATH" =>
-        Enum.join(
-          [Path.expand("../deps", __DIR__), Mix.Project.build_path()],
-          ":"
-        )
-    }
+    env: %{}
   ],
   css: [
     args: ~w(
@@ -71,5 +65,8 @@ config :lunch,
 # Use Jason for JSON parsing in Phoenix
 # of this file so it overrides the configuration defined above.
 config :phoenix, :json_library, Jason
+
+config :phoenix_live_view, :colocated_js,
+  target_directory: Path.expand("../assets/node_modules/phoenix-colocated", __DIR__)
 
 import_config "#{config_env()}.exs"
