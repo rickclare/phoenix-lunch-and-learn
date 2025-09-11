@@ -40,7 +40,7 @@ defmodule Lunch.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.8.0"},
+      {:phoenix, "~> 1.8.1", override: true},
       {:phoenix_ecto, "~> 4.5"},
       {:ecto_sql, "~> 3.10"},
       {:ecto_sqlite3, "~> 0.19"},
@@ -73,10 +73,10 @@ defmodule Lunch.MixProject do
       {:gettext, "~> 0.26"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.2"},
-      {:bandit, "~> 1.5"},
+      {:bandit, "~> 1.7"},
       #
       {:credo, "~> 1.7.7", only: [:dev, :test], runtime: false},
-      {:styler, "~> 1.4", only: [:dev, :test], runtime: false},
+      {:styler, "~> 1.8", only: [:dev, :test], runtime: false},
       {:tailwind_formatter, "~> 0.4.0", only: [:dev, :test], runtime: false}
     ]
   end
